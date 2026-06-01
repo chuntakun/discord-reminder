@@ -1,0 +1,16 @@
+name: Discord Notify Test
+
+on:
+  push:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Discord message
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d '{"content":"通知テスト"}' \
+          ${{ secrets.DISCORD_WEBHOOK_URL }}
